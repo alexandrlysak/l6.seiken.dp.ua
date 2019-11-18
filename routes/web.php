@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', 'Frontend\MainController@indexAction')->name('frontend.home.index');
+Route::get('/home', 'Frontend\MainController@indexAction')->name('home');
+Auth::routes();
