@@ -41,6 +41,9 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
+    /** Admin IP addresses */
+    'admin_ip' => ['176.108.8.230'],
+
     /*
     |--------------------------------------------------------------------------
     | Application URL

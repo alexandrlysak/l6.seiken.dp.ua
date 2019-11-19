@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Is user Admin
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->role == 1 && in_array(getRealClientIp(), config('app.admin_ip'));
+    }
 }

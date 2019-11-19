@@ -15,8 +15,17 @@
 //    return view('welcome');
 //});
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'Frontend\MainController@indexAction')->name('frontend.home.index');
-Route::get('/home', 'Frontend\MainController@indexAction')->name('home');
 Auth::routes();
+
+Route::get('/', 'Frontend\MainController@indexAction')->name('frontend.main.page');
+Route::get('/logout', 'Frontend\MainController@logoutAction')->name('frontend.main.page.logout');
+
+
+/** Admin dashboard routes */
+Route::group(['prefix' => 'backend', 'middleware' => ['isAdmin'],'namespace' => 'Backend'], function() {
+    Route::get('/', 'MainController@indexAction')->name('backend.main.page');
+});
+
